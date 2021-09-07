@@ -5,7 +5,11 @@ class Company extends Model {
         super.init({
             company_name: DataTypes.STRING,
             latest_price:DataTypes.FLOAT,
-            symbol: DataTypes.STRING
+            symbol: DataTypes.STRING,
+            market_cap: DataTypes.FLOAT,
+            week_high: DataTypes.FLOAT,
+            week_low: DataTypes.FLOAT
+
         }, {
             sequelize
         })

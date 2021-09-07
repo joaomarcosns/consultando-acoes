@@ -17,7 +17,7 @@ module.exports = {
           type: Sequelize.FLOAT,
           allowNull: false,
         },
-        marketCap: {
+        market_cap: {
           type: Sequelize.FLOAT,
           allowNull: false,
         },
@@ -25,11 +25,11 @@ module.exports = {
           type: Sequelize.STRING,
           allowNull: false,
         },
-        weekHigh: {
+        week_high: {
           type: Sequelize.FLOAT,
           allowNull: false,
         },
-        weekLow: {
+        week_low: {
           type: Sequelize.FLOAT,
           allowNull: false,
         },

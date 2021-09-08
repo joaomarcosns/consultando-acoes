@@ -1,4 +1,5 @@
 const axios = require('axios');
+const token = require('../../config');
 const Company = require('../model/Company');
 
 
@@ -15,7 +16,7 @@ module.exports = {
     },
     async create(req, res) {
         const { id } = req.params
-        const { data } = await axios(`https://cloud.iexapis.com/stable/stock/${id}/quote?token=pk_cb48fec75c7c4792b506a28ab0ee99a4`);
+        const { data } = await axios(`https://cloud.iexapis.com/stable/stock/${id}/quote?token=${token}`);
         const company = await Company.create({
             company_name: data.companyName, 
             latest_price: data.latestPrice, 
@@ -29,13 +30,3 @@ module.exports = {
     },
 
 }
-
-
-
-// try {
-//     const {data} = await axios(`https://cloud.iexapis.com/stable/stock/${id}/quote?token=pk_cb48fec75c7c4792b506a28ab0ee99a4`);
-    
-//     console.log(data);
-// } catch (error) {
-//     res.send({error: error.message});
-// }

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <form id="form">
+        <div class="d-flex justify-content-center h-100">
+            <div class="search"> 
+                <input type="text" class="search-input" placeholder="search..." name="input" id="input"> 
+                <button type="submit" id="button" class="search-icon"> <i class="fa fa-search"></i></button> 
+            </div>
+        </div>
+    </form>
+
+    <div class="container text-center pt-5" id="div-table" >
+        <table class="table table-bordered" >
+            <thead>
+              <tr>
+                <th scope="col">Nome da empresa</th>
+                <th scope="col">Símbolo</th>
+                <th scope="col">Ultimo Preço</th>
+                <th scope="col">Valor da Marca</th>
+                <th scope="col">Máximo da Semana</th>
+                <th scope="col">Menino da Semana</th>
+                <th scope="col">Pesquidado em</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="companyName" class="p-2"></td>
+                <td id="symbol" class="p-2"></td>
+                <td id="latestPrice" class="p-2"></td>
+                <td id="marketCap" class="p-2"></td>
+                <td id="weekHigh" class="p-2"></td>
+                <td id="weekLow" class="p-2"></td>
+                <td id="createdAt" class="p-2"></td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+    $('#form').on('submit', (e) => {
+        e.preventDefault();
+
+
+        var dados = $('#input').val();
+        console.log(dados);
+
+        $.ajax({
+            url: `http://localhost:3333/company/${dados}`,
+            type: 'POST',
+            success: (res) => {
+                var criadoEm = new Date(res.createdAt).toLocaleString('pt-BR', {
+                timeZone: 'UTC',
+                dateStyle: 'long',
+                timeStyle: 'short',
+                });
+
+                document.getElementById('companyName').innerHTML= res.company_name;
+                document.getElementById('symbol').innerHTML= res.symbol;
+                document.getElementById('latestPrice').innerHTML= res.latest_price;
+                document.getElementById('marketCap').innerHTML = res.market_cap;
+                document.getElementById('weekHigh').innerHTML = res.week_high;
+                document.getElementById('weekLow').innerHTML = res.week_low;
+                document.getElementById('createdAt').innerHTML = criadoEm;
+                document.getElementById("div-table").style="display:block !important";
+                $("#div-table").addClass(" slideInUp");
+                console.log(res);
+            },
+            error: (res) => {
+                console.error(res);
+            }
+        })
+    });
+
+  
+</script>
+
+</html>

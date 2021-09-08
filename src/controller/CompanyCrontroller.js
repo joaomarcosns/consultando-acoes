@@ -23,7 +23,6 @@ module.exports = {
             market_cap: data.marketCap,
             week_high: data.week52Low,
             week_low: data.week52Low
-
         });
         return res.json(company);
         

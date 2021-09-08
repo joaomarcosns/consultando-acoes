@@ -15,22 +15,22 @@
     <form id="form">
         <div class="d-flex justify-content-center h-100">
             <div class="search"> 
-                <input type="text" class="search-input" placeholder="search..." name="input" id="input"> 
-                <button type="submit" id="button" class="search-icon"> <i class="fa fa-search"></i></button> 
+                <input type="text" class="search-input" placeholder="Pesquisar..." name="input" id="input"> 
+                <button type="submit" id="button" class="search-icon btn"> <i class="fa fa-search"></i></button> 
             </div>
         </div>
     </form>
 
-    <div class="container text-center pt-5" id="div-table" >
+    <div class="container text-center pt-5" id="div-table" style="display: none;">
         <table class="table table-bordered" >
             <thead>
               <tr>
                 <th scope="col">Nome da empresa</th>
                 <th scope="col">Símbolo</th>
-                <th scope="col">Ultimo Preço</th>
+                <th scope="col">Ultimo Preço da Ação</th>
                 <th scope="col">Valor da Marca</th>
-                <th scope="col">Máximo da Semana</th>
-                <th scope="col">Menino da Semana</th>
+                <th scope="col">Máximo da Semana das Ações</th>
+                <th scope="col">Menino da Semana  das Ações</th>
                 <th scope="col">Pesquidado em</th>
               </tr>
             </thead>
@@ -69,13 +69,17 @@
                 dateStyle: 'long',
                 timeStyle: 'short',
                 });
+                var latest_price = res.latest_price.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+                var week_high = res.week_high.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+                var week_low = res.week_low.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+                var market_cap = res.market_cap.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
 
                 document.getElementById('companyName').innerHTML= res.company_name;
                 document.getElementById('symbol').innerHTML= res.symbol;
-                document.getElementById('latestPrice').innerHTML= res.latest_price;
-                document.getElementById('marketCap').innerHTML = res.market_cap;
-                document.getElementById('weekHigh').innerHTML = res.week_high;
-                document.getElementById('weekLow').innerHTML = res.week_low;
+                document.getElementById('latestPrice').innerHTML= latest_price;
+                document.getElementById('marketCap').innerHTML = market_cap;
+                document.getElementById('weekHigh').innerHTML = week_high;
+                document.getElementById('weekLow').innerHTML = week_low;
                 document.getElementById('createdAt').innerHTML = criadoEm;
                 document.getElementById("div-table").style="display:block !important";
                 $("#div-table").addClass(" slideInUp");

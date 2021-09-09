@@ -29,3 +29,9 @@
 6. Rode `yarn sequelize db:migrate` para executar as migrations;
 7. Rode `yarn dev` para iniciar o servidor;
 8. Rode `yarn test` para iniciar os testes.
+
+# Licença
+
+<div align="center">
+    <a href="https://github.com/joaomarcosns/teste-b-c/blob/main/LICENSE.md">GLP 3.0</a>
+</div>

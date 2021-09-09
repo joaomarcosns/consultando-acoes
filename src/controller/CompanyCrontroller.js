@@ -11,7 +11,7 @@ module.exports = {
     async store(req, res) {
         const { company_name, latest_price, symbol, market_cap, week_high, week_low} = req.body;
         const company = await Company.create({company_name, latest_price, symbol});
-        return res.json(company);
+        return res.status(200).json(company);
         
     },
     async create(req, res) {
@@ -25,7 +25,7 @@ module.exports = {
             week_high: data.week52Low,
             week_low: data.week52Low
         });
-        return res.json(company);
+        return res.status(200).json(company);
         
     },
 

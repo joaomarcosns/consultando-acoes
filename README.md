@@ -25,7 +25,7 @@
 
 1. Faça um clone desse repositório `git clone https://github.com/joaomarcosns/teste-b-c.git`;
 2. Entre na pasta `cd teste-b-c`;
-3. cp `config copy.js config.js`
+3. cp `config copy.js config.js` e colocar o seu token de acesso na variavel `TOKEN`
 4. Rode `yarn` para instalar as dependências;
 5. Altere as credencias dentro de `/src/config/database.js`;
 6. Rode `yarn sequelize db:create` para criar o banco de dados;

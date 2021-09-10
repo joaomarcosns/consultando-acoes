@@ -18,17 +18,20 @@
 ## ✋🏻 Pré-requisitos
 - [Node.js](https://nodejs.org/en/)
 - [Yarn](https://yarnpkg.com/pt-BR/docs/install)
+- [iexcloud](https://iexcloud.io/)
+<p>OBS: É preciso ter conta na iexcloud. Pois é necessario um token de acesso</p>
 
 ## 🔥 Instalação e execução
 
 1. Faça um clone desse repositório `git clone https://github.com/joaomarcosns/teste-b-c.git`;
 2. Entre na pasta `cd teste-b-c`;
-3. Rode `yarn` para instalar as dependências;
-4. Altere as credencias dentro de `/src/config/database.js`;
-5. Rode `yarn sequelize db:create` para criar o banco de dados;
-6. Rode `yarn sequelize db:migrate` para executar as migrations;
-7. Rode `yarn dev` para iniciar o servidor;
-8. Rode `yarn test` para iniciar os testes.
+3. cp `config copy.js config.js`
+4. Rode `yarn` para instalar as dependências;
+5. Altere as credencias dentro de `/src/config/database.js`;
+6. Rode `yarn sequelize db:create` para criar o banco de dados;
+7. Rode `yarn sequelize db:migrate` para executar as migrations;
+8. Rode `yarn dev` para iniciar o servidor;
+9. Rode `yarn test` para iniciar os testes.
 
 # Licença
 

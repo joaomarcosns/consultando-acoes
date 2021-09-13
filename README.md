@@ -31,7 +31,8 @@
 6. Rode `yarn sequelize db:create` para criar o banco de dados;
 7. Rode `yarn sequelize db:migrate` para executar as migrations;
 8. Rode `yarn dev` para iniciar o servidor;
-9. Rode `yarn test` para iniciar os testes.
+9. Rode `yarn test` para iniciar os testes;
+10. Rode `npx lite-server`para iniciar a pina html.
 
 # Licença
 

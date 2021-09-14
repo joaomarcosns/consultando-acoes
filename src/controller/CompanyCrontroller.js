@@ -16,17 +16,22 @@ module.exports = {
     },
     async create(req, res) {
         const { id } = req.params
-        const { data } = await axios(`https://cloud.iexapis.com/stable/stock/${id}/quote?token=${token}`);
-        const company = await Company.create({
-            company_name: data.companyName, 
-            latest_price: data.latestPrice, 
-            symbol: data.symbol,
-            market_cap: data.marketCap,
-            week_high: data.week52Low,
-            week_low: data.week52Low
-        });
-        return res.status(200).json(company);
-        
+        try {
+            const { data } = await axios(`https://cloud.iexapis.com/stable/stock/${id}/quote?token=${token}`);
+            const company = await Company.create({
+                company_name: data.companyName, 
+                latest_price: data.latestPrice, 
+                symbol: data.symbol,
+                market_cap: data.marketCap,
+                week_high: data.week52Low,
+                week_low: data.week52Low
+            });
+            return res.status(200).json(company);
+        }catch (err) {
+            console.error("Error response:");
+            console.error(err.response.status);
+            return res.status(404);
+        }
     },
 
 }
